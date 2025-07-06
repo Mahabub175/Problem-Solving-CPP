@@ -476,3 +476,260 @@ using namespace std;
 
 //     return 0;
 // }
+
+// struct Node
+// {
+//     int val;
+//     Node *next;
+//     Node(int v) : val(v), next(nullptr) {}
+// };
+
+// void insert(Node *&head, int val)
+// {
+//     if (!head)
+//     {
+//         head = new Node(val);
+//         return;
+//     }
+
+//     Node *tmp = head;
+//     while (tmp->next)
+//         tmp = tmp->next;
+
+//     tmp->next = new Node(val);
+// }
+
+// int main()
+// {
+//     Node *head = nullptr;
+//     int x;
+//     while (cin >> x && x != -1)
+//         insert(head, x);
+
+//     int mn = INT_MAX, mx = INT_MIN;
+
+//     for (Node *t = head; t; t = t->next)
+//     {
+//         if (t->val < mn)
+//             mn = t->val;
+//         if (t->val > mx)
+//             mx = t->val;
+//     }
+
+//     cout << mx - mn << endl;
+// }
+
+// struct Node
+// {
+//     int val;
+//     Node *next;
+//     Node(int v) : val(v), next(nullptr) {}
+// };
+
+// int main()
+// {
+//     int T;
+//     cin >> T;
+//     while (T--)
+//     {
+//         Node *head = nullptr, *tail = nullptr;
+//         int x, v;
+
+//         while (cin >> v && v != -1)
+//         {
+//             Node *node = new Node(v);
+//             if (!head)
+//                 head = tail = node;
+//             else
+//                 tail = tail->next = node;
+//         }
+
+//         cin >> x;
+//         int i = 0, found = -1;
+
+//         for (Node *t = head; t; t = t->next, i++)
+//             if (t->val == x)
+//             {
+//                 found = i;
+//                 break;
+//             }
+//         cout << found << endl;
+//     }
+// }
+
+// struct Node
+// {
+//     int val;
+//     Node *next;
+//     Node(int v) : val(v), next(nullptr) {}
+// };
+
+// int main()
+// {
+//     Node *a = nullptr, *b = nullptr, *t;
+//     int v;
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node *n = new Node(v);
+//         if (!a)
+//             a = t = n;
+//         else
+//             t = t->next = n;
+//     }
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node *n = new Node(v);
+//         if (!b)
+//             b = t = n;
+//         else
+//             t = t->next = n;
+//     }
+
+//     Node *p = a, *q = b;
+//     while (p && q && p->val == q->val)
+//         p = p->next, q = q->next;
+
+//     cout << (p || q ? "NO" : "YES") << endl;
+// }
+
+// struct Node
+// {
+//     int val;
+//     Node *next;
+//     Node(int v) : val(v), next(nullptr) {}
+// };
+
+// int main()
+// {
+//     int Q, x, v;
+//     cin >> Q;
+//     Node *head = nullptr;
+
+//     while (Q--)
+//     {
+//         cin >> x >> v;
+//         if (x == 0)
+//         {
+//             Node *n = new Node(v);
+//             n->next = head;
+//             head = n;
+//         }
+//         else if (x == 1)
+//         {
+//             Node *n = new Node(v);
+//             if (!head)
+//                 head = n;
+//             else
+//             {
+//                 Node *t = head;
+//                 while (t->next)
+//                     t = t->next;
+//                 t->next = n;
+//             }
+//         }
+//         else if (x == 2)
+//         {
+//             if (v == 0 && head)
+//             {
+//                 Node *d = head;
+//                 head = head->next;
+//                 delete d;
+//             }
+//             else
+//             {
+//                 Node *t = head;
+//                 for (int i = 0; t && i < v - 1; i++)
+//                     t = t->next;
+//                 if (t && t->next)
+//                 {
+//                     Node *d = t->next;
+//                     t->next = t->next->next;
+//                     delete d;
+//                 }
+//             }
+//         }
+
+//         for (Node *t = head; t; t = t->next)
+//             cout << t->val << " ";
+//         cout << "\n";
+//     }
+// }
+
+// struct Node
+// {
+//     int V;
+//     Node *next;
+//     Node(int val) : V(val), next(nullptr) {}
+// };
+
+// int main()
+// {
+//     Node *head = nullptr, *tail = nullptr;
+//     int V;
+
+//     while (cin >> V && V != -1)
+//     {
+//         Node *n = new Node(V);
+//         if (!head)
+//             head = tail = n;
+//         else
+//             tail = tail->next = n;
+//     }
+
+//     for (Node *c = head; c; c = c->next)
+//     {
+//         Node *p = c, *t = c->next;
+//         while (t)
+//         {
+//             if (t->V == c->V)
+//             {
+//                 Node *d = t;
+//                 p->next = t->next;
+//                 t = t->next;
+//                 delete d;
+//             }
+//             else
+//                 p = t, t = t->next;
+//         }
+//     }
+
+//     for (Node *t = head; t; t = t->next)
+//         cout << t->V << " ";
+// }
+
+// struct Node
+// {
+//     int val;
+//     Node *next;
+//     Node(int v) : val(v), next(nullptr) {}
+// };
+
+// int main()
+// {
+//     Node *head = nullptr;
+//     Node *tail = nullptr;
+//     int v;
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node *n = new Node(v);
+//         if (!head)
+//             head = tail = n;
+//         else
+//             tail = tail->next = n;
+//     }
+
+//     int mn = INT_MAX, mx = INT_MIN;
+
+//     for (Node *t = head; t; t = t->next)
+//     {
+//         if (t->val < mn)
+//             mn = t->val;
+//         if (t->val > mx)
+//             mx = t->val;
+//     }
+
+//     cout << mx - mn << "\n";
+// }
