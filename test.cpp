@@ -733,3 +733,335 @@ using namespace std;
 
 //     cout << mx - mn << "\n";
 // }
+
+// int main()
+// {
+//     typedef int *Node;
+//     Node head = nullptr, tail = nullptr;
+//     int v;
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node n = (int *)malloc(sizeof(int) * 2);
+//         n[0] = v;
+//         *((intptr_t *)&n[1]) = (intptr_t)nullptr;
+
+//         if (!head)
+//         {
+//             head = tail = n;
+//         }
+//         else
+//         {
+//             *((intptr_t *)&tail[1]) = (intptr_t)n;
+//             tail = n;
+//         }
+//     }
+
+//     int mn = INT_MAX, mx = INT_MIN;
+//     Node t = head;
+
+//     while (t)
+//     {
+//         if (t[0] < mn)
+//             mn = t[0];
+//         if (t[0] > mx)
+//             mx = t[0];
+//         t = (Node)(*((intptr_t *)&t[1]));
+//     }
+
+//     cout << mx - mn << endl;
+
+//     t = head;
+
+//     while (t)
+//     {
+//         Node next = (Node)(*((intptr_t *)&t[1]));
+//         free(t);
+//         t = next;
+//     }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int T;
+//     cin >> T;
+
+//     while (T--)
+//     {
+//         typedef void **Node;
+//         Node head = nullptr, tail = nullptr;
+//         int v;
+
+//         while (cin >> v && v != -1)
+//         {
+//             Node n = (Node)malloc(sizeof(void *) * 2);
+//             n[0] = (void *)(intptr_t)v;
+//             n[1] = nullptr;
+
+//             if (!head)
+//             {
+//                 head = tail = n;
+//             }
+//             else
+//             {
+//                 tail[1] = (void *)n;
+//                 tail = n;
+//             }
+//         }
+
+//         int X;
+//         cin >> X;
+
+//         Node t = head;
+//         int idx = 0, found = -1;
+
+//         while (t)
+//         {
+//             int val = (int)(intptr_t)t[0];
+//             if (val == X)
+//             {
+//                 found = idx;
+//                 break;
+//             }
+//             t = (Node)t[1];
+//             idx++;
+//         }
+
+//         cout << found << endl;
+
+//         t = head;
+
+//         while (t)
+//         {
+//             Node next = (Node)t[1];
+//             free(t);
+//             t = next;
+//         }
+//     }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     typedef void **Node;
+//     Node head1 = nullptr, tail1 = nullptr;
+//     Node head2 = nullptr, tail2 = nullptr;
+//     int v;
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node n = (Node)malloc(sizeof(void *) * 2);
+//         n[0] = (void *)(intptr_t)v;
+//         n[1] = nullptr;
+//         if (!head1)
+//             head1 = tail1 = n;
+//         else
+//         {
+//             tail1[1] = (void *)n;
+//             tail1 = n;
+//         }
+//     }
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node n = (Node)malloc(sizeof(void *) * 2);
+//         n[0] = (void *)(intptr_t)v;
+//         n[1] = nullptr;
+//         if (!head2)
+//             head2 = tail2 = n;
+//         else
+//         {
+//             tail2[1] = (void *)n;
+//             tail2 = n;
+//         }
+//     }
+
+//     Node a = head1, b = head2;
+//     bool same = true;
+
+//     while (a && b)
+//     {
+//         if ((int)(intptr_t)a[0] != (int)(intptr_t)b[0])
+//         {
+//             same = false;
+//             break;
+//         }
+//         a = (Node)a[1];
+//         b = (Node)b[1];
+//     }
+
+//     if (a || b)
+//         same = false;
+
+//     cout << (same ? "YES" : "NO") << endl;
+
+//     while (head1)
+//     {
+//         Node next = (Node)head1[1];
+//         free(head1);
+//         head1 = next;
+//     }
+
+//     while (head2)
+//     {
+//         Node next = (Node)head2[1];
+//         free(head2);
+//         head2 = next;
+//     }
+
+//     return 0;
+// }
+
+// typedef void **Node;
+
+// int main()
+// {
+//     int Q;
+//     cin >> Q;
+//     Node head = nullptr, tail = nullptr;
+
+//     for (int i = 0; i < Q; i++)
+//     {
+//         int X, V;
+//         cin >> X >> V;
+
+//         if (X == 0)
+//         {
+//             Node n = (Node)malloc(sizeof(void *) * 2);
+//             n[0] = (void *)(intptr_t)V;
+//             n[1] = head;
+//             head = n;
+//             if (!tail)
+//                 tail = n;
+//         }
+//         else if (X == 1)
+//         {
+//             Node n = (Node)malloc(sizeof(void *) * 2);
+//             n[0] = (void *)(intptr_t)V;
+//             n[1] = nullptr;
+//             if (!head)
+//                 head = tail = n;
+//             else
+//             {
+//                 tail[1] = (void *)n;
+//                 tail = n;
+//             }
+//         }
+//         else if (X == 2)
+//         {
+//             if (V < 0)
+//             {
+//             }
+//             else if (V == 0 && head)
+//             {
+//                 Node temp = head;
+//                 head = (Node)head[1];
+//                 free(temp);
+//                 if (!head)
+//                     tail = nullptr;
+//             }
+//             else
+//             {
+//                 Node cur = head;
+//                 for (int i = 0; i < V - 1 && cur; i++)
+//                     cur = (Node)cur[1];
+//                 if (cur && cur[1])
+//                 {
+//                     Node temp = (Node)cur[1];
+//                     cur[1] = temp[1];
+//                     if (temp == tail)
+//                         tail = cur;
+//                     free(temp);
+//                 }
+//             }
+//         }
+
+//         Node t = head;
+
+//         while (t)
+//         {
+//             cout << (int)(intptr_t)t[0] << " ";
+//             t = (Node)t[1];
+//         }
+//         cout << "\n";
+//     }
+
+//     while (head)
+//     {
+//         Node next = (Node)head[1];
+//         free(head);
+//         head = next;
+//     }
+
+//     return 0;
+// }
+
+// typedef void **Node;
+
+// int main()
+// {
+//     Node head = nullptr, tail = nullptr;
+//     int v;
+
+//     while (cin >> v && v != -1)
+//     {
+//         Node n = (Node)malloc(sizeof(void *) * 2);
+//         n[0] = (void *)(intptr_t)v;
+//         n[1] = nullptr;
+//         if (!head)
+//             head = tail = n;
+//         else
+//         {
+//             tail[1] = (void *)n;
+//             tail = n;
+//         }
+//     }
+
+//     Node cur = head;
+
+//     while (cur)
+//     {
+//         int val = (int)(intptr_t)cur[0];
+//         Node prev = cur;
+//         Node runner = (Node)cur[1];
+//         while (runner)
+//         {
+//             if ((int)(intptr_t)runner[0] == val)
+//             {
+//                 Node toDelete = runner;
+//                 prev[1] = runner[1];
+//                 if (toDelete == tail)
+//                     tail = prev;
+//                 runner = (Node)runner[1];
+//                 free(toDelete);
+//             }
+//             else
+//             {
+//                 prev = runner;
+//                 runner = (Node)runner[1];
+//             }
+//         }
+//         cur = (Node)cur[1];
+//     }
+
+//     cur = head;
+
+//     while (cur)
+//     {
+//         cout << (int)(intptr_t)cur[0] << " ";
+//         cur = (Node)cur[1];
+//     }
+//     cout << "\n";
+
+//     while (head)
+//     {
+//         Node next = (Node)head[1];
+//         free(head);
+//         head = next;
+//     }
+
+//     return 0;
+// }
