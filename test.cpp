@@ -1065,3 +1065,328 @@ using namespace std;
 
 //     return 0;
 // }
+
+// int main()
+// {
+//     std::list<int> lst;
+//     int x;
+
+//     while (std::cin >> x && x != -1)
+//         lst.push_back(x);
+//     lst.sort();
+//     lst.unique();
+
+//     for (int v : lst)
+//         std::cout << v << " ";
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     std::list<int> dll;
+//     int x;
+
+//     while (std::cin >> x && x != -1)
+//         dll.push_back(x);
+
+//     std::vector<int> v(dll.begin(), dll.end());
+//     int i = 0, j = v.size() - 1;
+
+//     while (i < j)
+//     {
+//         if (v[i] != v[j])
+//         {
+//             std::cout << "NO";
+//             return 0;
+//         }
+//         i++;
+//         j--;
+//     }
+
+//     std::cout << "YES";
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     list<string> pages;
+//     string s;
+
+//     while (cin >> s && s != "end")
+//         pages.push_back(s);
+
+//     int q;
+//     cin >> q;
+//     auto cur = pages.begin();
+
+//     while (q--)
+//     {
+//         string cmd;
+//         cin >> cmd;
+
+//         if (cmd == "visit")
+//         {
+//             string addr;
+//             cin >> addr;
+//             auto it = find(pages.begin(), pages.end(), addr);
+//             if (it != pages.end())
+//             {
+//                 cur = it;
+//                 cout << *cur << "\n";
+//             }
+//             else
+//                 cout << "Not Available\n";
+//         }
+//         else if (cmd == "next")
+//         {
+//             auto nxt = cur;
+//             nxt++;
+//             if (nxt != pages.end())
+//             {
+//                 cur = nxt;
+//                 cout << *cur << "\n";
+//             }
+//             else
+//                 cout << "Not Available\n";
+//         }
+//         else if (cmd == "prev")
+//         {
+//             if (cur != pages.begin())
+//             {
+//                 cur--;
+//                 cout << *cur << "\n";
+//             }
+//             else
+//                 cout << "Not Available\n";
+//         }
+//     }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int Q;
+//     cin >> Q;
+//     list<int> dll;
+
+//     while (Q--)
+//     {
+//         int X, V;
+//         cin >> X >> V;
+
+//         if (X < 0 || X > (int)dll.size())
+//         {
+//             cout << "Invalid\n";
+//             continue;
+//         }
+
+//         auto it = next(dll.begin(), X);
+//         dll.insert(it, V);
+
+//         cout << "L -> ";
+//         for (int val : dll)
+//             cout << val << " ";
+//         cout << "\n";
+
+//         cout << "R -> ";
+//         for (auto rit = dll.rbegin(); rit != dll.rend(); ++rit)
+//             cout << *rit << " ";
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int Q;
+//     cin >> Q;
+//     list<long long> dll;
+
+//     while (Q--)
+//     {
+//         int X;
+//         long long V;
+//         cin >> X >> V;
+
+//         if (X == 0)
+//             dll.push_front(V);
+//         else if (X == 1)
+//             dll.push_back(V);
+//         else if (X == 2 && V < (int)dll.size())
+//         {
+//             auto it = dll.begin();
+//             advance(it, V);
+//             dll.erase(it);
+//         }
+//         cout << "L -> ";
+
+//         for (auto &val : dll)
+//             cout << val << " ";
+//         cout << "\nR -> ";
+
+//         for (auto rit = dll.rbegin(); rit != dll.rend(); ++rit)
+//             cout << *rit << " ";
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int N, M;
+//     cin >> N >> M;
+
+//     stack<int> s;
+//     queue<int> q;
+
+//     for (int i = 0, x; i < N; i++)
+//     {
+//         cin >> x;
+//         s.push(x);
+//     }
+
+//     for (int i = 0, x; i < M; i++)
+//     {
+//         cin >> x;
+//         q.push(x);
+//     }
+
+//     if (N != M)
+//     {
+//         cout << "NO";
+//         return 0;
+//     }
+
+//     bool match = true;
+
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (s.top() != q.front())
+//         {
+//             match = false;
+//             break;
+//         }
+//         s.pop();
+//         q.pop();
+//     }
+
+//     cout << (match ? "YES" : "NO");
+//     return 0;
+// }
+
+// int main()
+// {
+//     int N, M;
+//     cin >> N >> M;
+
+//     if (N != M)
+//     {
+//         cout << "NO";
+//         return 0;
+//     }
+
+//     int a[1000000], b[1000000];
+
+//     for (int i = 0; i < N; i++)
+//         cin >> a[i];
+//     for (int i = 0; i < M; i++)
+//         cin >> b[i];
+
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (a[N - 1 - i] != b[i])
+//         {
+//             cout << "NO";
+//             return 0;
+//         }
+//     }
+
+//     cout << "YES";
+//     return 0;
+// }
+
+// int main()
+// {
+//     int T;
+//     cin >> T;
+
+//     while (T--)
+//     {
+//         string S;
+//         cin >> S;
+//         stack<char> st;
+//         for (char c : S)
+//         {
+//             if (!st.empty() && ((st.top() == '0' && c == '1') || (st.top() == '1' && c == '0')))
+//             {
+//                 st.pop();
+//             }
+//             else
+//             {
+//                 st.push(c);
+//             }
+//         }
+//         cout << (st.empty() ? "YES" : "NO") << "\n";
+//     }
+//     return 0;
+// }
+
+// int main()
+// {
+//     int Q;
+//     cin >> Q;
+//     queue<string> q;
+
+//     while (Q--)
+//     {
+//         int cmd;
+//         cin >> cmd;
+//         if (cmd == 0)
+//         {
+//             string name;
+//             cin >> name;
+//             q.push(name);
+//         }
+//         else
+//         {
+//             if (q.empty())
+//                 cout << "Invalid\n";
+//             else
+//             {
+//                 cout << q.front() << "\n";
+//                 q.pop();
+//             }
+//         }
+//     }
+
+//     return 0;
+// }
+
+int main()
+{
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+        string S;
+        cin >> S;
+        stack<char> st;
+
+        for (char c : S)
+        {
+            if (c == '1' && !st.empty() && st.top() == '0')
+                st.pop();
+            else
+                st.push(c);
+        }
+        cout << (st.empty() ? "YES\n" : "NO\n");
+    }
+
+    return 0;
+}
